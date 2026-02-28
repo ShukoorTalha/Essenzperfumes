@@ -724,6 +724,34 @@
       opacity: 1;
     }
 
+    .product-sizes {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .size-pill {
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      padding: 6px 12px;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      color: var(--muted);
+      cursor: none;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      border-radius: 2px;
+      position: relative;
+      z-index: 10;
+      pointer-events: auto;
+    }
+
+    .size-pill:hover,
+    .size-pill.active {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(201, 168, 76, 0.08);
+    }
+
     /* FEATURED PRODUCTS */
     .products {
       padding: 140px 60px;
@@ -1503,7 +1531,7 @@
     <div class="cart-footer">
       <div class="cart-total">
         <span>Total</span>
-        <span id="cartTotalPrice">$0.00</span>
+        <span id="cartTotalPrice">₹0</span>
       </div>
       <button class="btn-primary cart-checkout" id="cartCheckoutBtn">Proceed to Checkout</button>
     </div>
@@ -1745,8 +1773,13 @@
             <div class="product-inspired">Inspired by Bleu de Chanel</div>
             <div class="product-name">Essenz Bleu</div>
             <div class="product-notes">Citrus · Woods · Refined Spices<br>Balanced and timelessly professional</div>
+            <div class="product-sizes">
+              <div class="size-pill" data-size="30">30ml</div>
+              <div class="size-pill active" data-size="50">50ml</div>
+              <div class="size-pill" data-size="100">100ml</div>
+            </div>
             <div class="product-footer">
-              <div class="product-price">$38</div>
+              <div class="product-price">₹3150</div>
               <button class="product-add">Add to Cart</button>
             </div>
           </div>
@@ -1761,8 +1794,13 @@
             <div class="product-inspired">Inspired by Tobacco Vanille</div>
             <div class="product-name">Essenz Vanille</div>
             <div class="product-notes">Tobacco · Vanilla · Cacao<br>A bold, spicy classic for winter nights</div>
+            <div class="product-sizes">
+              <div class="size-pill" data-size="30">30ml</div>
+              <div class="size-pill active" data-size="50">50ml</div>
+              <div class="size-pill" data-size="100">100ml</div>
+            </div>
             <div class="product-footer">
-              <div class="product-price">$38</div>
+              <div class="product-price">₹3150</div>
               <button class="product-add">Add to Cart</button>
             </div>
           </div>
@@ -1777,8 +1815,13 @@
             <div class="product-inspired">Inspired by Tom Ford Oud Wood</div>
             <div class="product-name">Essenz Oud</div>
             <div class="product-notes">Oud · Sandalwood · Clean Woods<br>Sophisticated and iconic</div>
+            <div class="product-sizes">
+              <div class="size-pill" data-size="30">30ml</div>
+              <div class="size-pill active" data-size="50">50ml</div>
+              <div class="size-pill" data-size="100">100ml</div>
+            </div>
             <div class="product-footer">
-              <div class="product-price">$42</div>
+              <div class="product-price">₹3480</div>
               <button class="product-add">Add to Cart</button>
             </div>
           </div>
@@ -1793,8 +1836,13 @@
             <div class="product-inspired">Inspired by YSL Black Opium</div>
             <div class="product-name">Essenz Noir</div>
             <div class="product-notes">Coffee · Vanilla · Gourmand<br>A sweet, energetic evening standard</div>
+            <div class="product-sizes">
+              <div class="size-pill" data-size="30">30ml</div>
+              <div class="size-pill active" data-size="50">50ml</div>
+              <div class="size-pill" data-size="100">100ml</div>
+            </div>
             <div class="product-footer">
-              <div class="product-price">$38</div>
+              <div class="product-price">₹3150</div>
               <button class="product-add">Add to Cart</button>
             </div>
           </div>
@@ -1809,8 +1857,13 @@
             <div class="product-inspired">Inspired by Ombre Leather</div>
             <div class="product-name">Essenz Leather</div>
             <div class="product-notes">Leather · Amber · Moss<br>Raw, tactile, and incredibly bold</div>
+            <div class="product-sizes">
+              <div class="size-pill" data-size="30">30ml</div>
+              <div class="size-pill active" data-size="50">50ml</div>
+              <div class="size-pill" data-size="100">100ml</div>
+            </div>
             <div class="product-footer">
-              <div class="product-price">$42</div>
+              <div class="product-price">₹3480</div>
               <button class="product-add">Add to Cart</button>
             </div>
           </div>
@@ -1825,8 +1878,13 @@
             <div class="product-inspired">Inspired by Rasasi Hawas Ice</div>
             <div class="product-name">Essenz Ice</div>
             <div class="product-notes">Bergamot · Apple · Marine · Musk<br>The ultimate daily driver</div>
+            <div class="product-sizes">
+              <div class="size-pill" data-size="30">30ml</div>
+              <div class="size-pill active" data-size="50">50ml</div>
+              <div class="size-pill" data-size="100">100ml</div>
+            </div>
             <div class="product-footer">
-              <div class="product-price">$34</div>
+              <div class="product-price">₹2800</div>
               <button class="product-add">Add to Cart</button>
             </div>
           </div>
@@ -1971,7 +2029,7 @@
     }
     animLoop();
 
-    document.querySelectorAll('a, button, .collection-card, .product-card').forEach(el => {
+    document.querySelectorAll('a, button, .collection-card, .product-card, .size-pill').forEach(el => {
       el.addEventListener('mouseenter', () => {
         isHovering = true;
         cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
@@ -2176,7 +2234,7 @@
 
       if (cart.length === 0) {
         cartItemsContainer.innerHTML = '<div class="cart-empty">Your cart is beautifully empty.</div>';
-        cartTotalPrice.innerText = '$0.00';
+        cartTotalPrice.innerText = '₹0';
         return;
       }
 
@@ -2188,7 +2246,7 @@
           <img src="${item.image}" alt="${item.name}" class="cart-item-img">
           <div class="cart-item-details">
             <div class="cart-item-title">${item.name}</div>
-            <div class="cart-item-price">$${item.price}</div>
+            <div class="cart-item-price">₹${item.price}</div>
             <div class="cart-item-actions">
               <button class="qty-btn" onclick="updateQty(${index}, -1)">-</button>
               <span class="qty-val">${item.quantity}</span>
@@ -2200,7 +2258,7 @@
         cartItemsContainer.appendChild(div);
       });
 
-      cartTotalPrice.innerText = '$' + totalPrice.toFixed(2);
+      cartTotalPrice.innerText = '₹' + totalPrice.toFixed(2);
     }
 
     window.updateQty = function (index, delta) {
@@ -2216,12 +2274,13 @@
       updateCartUI();
     };
 
-    function addToCart(name, price, image) {
-      const existing = cart.find(i => i.name === name);
+    function addToCart(name, price, image, size) {
+      const cartName = size ? `${name} - ${size}` : name;
+      const existing = cart.find(i => i.name === cartName);
       if (existing) {
         existing.quantity += 1;
       } else {
-        cart.push({ name, price, image, quantity: 1 });
+        cart.push({ name: cartName, price, image, quantity: 1, baseName: name, size });
       }
       updateCartUI();
       // Optional: open cart when added
@@ -2231,16 +2290,14 @@
     }
 
     // Razorpay Checkout Integration
-    function openRazorpayCheckout(totalAmountDollar) {
-      if (totalAmountDollar <= 0) {
+    function openRazorpayCheckout(totalAmountINR) {
+      if (totalAmountINR <= 0) {
         alert("Your cart is empty!");
         return;
       }
 
-      // Convert Dollar to INR (approximate 1 USD = 83 INR)
-      const priceInINR = totalAmountDollar * 83;
-      // Amount is in paise (1 INR = 100 paise)
-      const amountInPaise = Math.round(priceInINR * 100);
+      // Amount is already in INR, convert to paise (1 INR = 100 paise)
+      const amountInPaise = Math.round(totalAmountINR * 100);
 
       const itemNames = cart.map(i => `${i.quantity}x ${i.name}`).join(', ');
 
@@ -2272,6 +2329,28 @@
       rzp1.open();
     }
 
+    // Bind Size Pills
+    document.querySelectorAll('.size-pill').forEach(pill => {
+      pill.addEventListener('click', (e) => {
+        const sizesContainer = e.target.closest('.product-sizes');
+        sizesContainer.querySelectorAll('.size-pill').forEach(p => p.classList.remove('active'));
+        e.target.classList.add('active');
+
+        const card = e.target.closest('.product-card');
+        const priceElement = card.querySelector('.product-price');
+        if (!priceElement.dataset.basePrice) {
+          priceElement.dataset.basePrice = priceElement.innerText.replace('₹', '');
+        }
+        const base = parseFloat(priceElement.dataset.basePrice);
+        const size = e.target.dataset.size;
+        let newPrice = base;
+        if (size === '30') newPrice = Math.floor(base * 0.7);
+        if (size === '100') newPrice = Math.floor(base * 1.8);
+
+        priceElement.innerText = '₹' + newPrice;
+      });
+    });
+
     // Bind Add to Cart buttons
     document.querySelectorAll('.product-add').forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -2279,9 +2358,11 @@
         if (productCard) {
           const name = productCard.querySelector('.product-name').innerText;
           const priceText = productCard.querySelector('.product-price').innerText;
-          const price = parseFloat(priceText.replace('$', ''));
+          const price = parseFloat(priceText.replace('₹', ''));
           const image = productCard.querySelector('.product-image').src;
-          addToCart(name, price, image);
+          const activePill = productCard.querySelector('.size-pill.active');
+          const size = activePill ? activePill.dataset.size + 'ml' : '50ml';
+          addToCart(name, price, image, size);
 
           // Visual feedback
           const originalText = btn.innerText;

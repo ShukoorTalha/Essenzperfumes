@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    image: essenz-perfumes
+    container_name: essenz-app
+    restart: unless-stopped
+    ports:
+      - "9222:9222"
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: essenz-perfumes-tunnel
+    command: tunnel --no-autoupdate run --token eyJhIjoiYWU0YmVmZTBjYjIyOTk3MTZlMDljYzE0ODMzZGM0NTEiLCJ0IjoiMzM2Y2FmM2QtNjAxMC00YzY3LWJlYzEtZTViYzc1ZTk4M2U4IiwicyI6IlpUazNabVV3WW1ZdE5USmtaUzAwTXprd0xUZzNaREV0TjJVMFpHWXpZMk5sTURRMCJ9
+    restart: unless-stopped
+    depends_on:
+      - app

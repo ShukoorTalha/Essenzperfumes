@@ -8,6 +8,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@100;200;300;400&display=swap"
     rel="stylesheet">
+  <script src="env.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <style>
     :root {
@@ -2302,7 +2304,7 @@
       const itemNames = cart.map(i => `${i.quantity}x ${i.name}`).join(', ');
 
       var options = {
-        "key": "rzp_test_YOUR_KEY_HERE", // Enter the Key ID generated from the Dashboard
+        "key": window.ENV.RAZORPAY_KEY || "rzp_test_YOUR_KEY_HERE", // Enter the Key ID generated from the Dashboard
         "amount": amountInPaise,
         "currency": "INR",
         "name": "Essenz Perfumes",
@@ -2390,6 +2392,13 @@
       const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
       openRazorpayCheckout(total);
     });
+
+    // Initialize Supabase Client
+    const supabaseUrl = window.ENV.SUPABASE_URL;
+    const supabaseKey = window.ENV.SUPABASE_ANON_KEY;
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+    console.log("Supabase client initialized", supabase);
+
   </script>
 </body>
 

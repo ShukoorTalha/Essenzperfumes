@@ -1,9 +1,6 @@
-version: '3.8'
-
 services:
   app:
-    build: .
-    image: essenz-perfumes
+    image: 4703978/essenz-perfumes:latest
     container_name: essenz-app
     restart: unless-stopped
     ports:
